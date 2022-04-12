@@ -39,7 +39,6 @@ class UserController {
     @PostMapping("/deleted-user")
     private fun deleteUserById(@RequestBody id: String): HttpStatus =
             if(userService.deleteUser(id.toInt())) HttpStatus.OK else HttpStatus.BAD_REQUEST
-//        return  HttpStatus.OK
 
     @PostMapping("updated-user")
     private fun updateUser(@RequestBody id: Int): HttpStatus =
