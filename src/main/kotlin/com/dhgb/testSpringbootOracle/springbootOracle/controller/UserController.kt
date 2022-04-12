@@ -1,36 +1,47 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.controller
 
-import com.dhgb.testSpringbootOracle.springbootOracle.dto.UserRequest
-import com.dhgb.testSpringbootOracle.springbootOracle.database.UserDb
-import com.dhgb.testSpringbootOracle.springbootOracle.repository.UserRepository
+import com.dhgb.testSpringbootOracle.springbootOracle.model.User
+import com.dhgb.testSpringbootOracle.springbootOracle.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
-import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.web.bind.annotation.*
+
 
 //Oracle
 @RestController
-class UserController(@Autowired jdbcTemplate: JdbcTemplate) {
+class UserController {
 
-    val userRepository = UserRepository(jdbcTemplate)
+    @Autowired
+    lateinit var userService: UserService
+
 
     @GetMapping("/")
-    fun findAll(): List<UserDb> {
-        return userRepository.findAllIntoDb()
+    private fun findAll(): List<User> {
+        return userService.findAllUsers()
     }
 
     @PostMapping("/type")
-    fun findColumnUser(@RequestBody column: String): List<String>{
-        return userRepository.findColumnIntoDb(column.trim())
+    private fun findColumnUser(@RequestBody column: String){ //: List<String>
+//        println("Todos: ${userRepo.findAll()}")
+//        return userRepository.findColumnIntoDb(column.trim())
     }
 
+//    @PostMapping("/users-name")
+//    fun findByUserName(@RequestBody name: String): List<User>{
+////        return userRepo.findByUserName(name)
+//    }
+
     @PostMapping("/new-user")
-    fun addUser(@RequestBody user: UserRequest): HttpStatus {
-        return if(userRepository.addUserDb((user))) HttpStatus.OK else HttpStatus.BAD_REQUEST
+    private fun addUser(@RequestBody user: User): HttpStatus {
+        return if(userService.saveUser(user)) HttpStatus.OK else HttpStatus.BAD_REQUEST
     }
 
     @PostMapping("/deleted-user")
-    fun deleteUserById(@RequestBody id: String): HttpStatus{
-        return if(userRepository.deleteUserById(id.toInt())) HttpStatus.OK else HttpStatus.BAD_REQUEST
-    }
+    private fun deleteUserById(@RequestBody id: String): HttpStatus =
+            if(userService.deleteUser(id.toInt())) HttpStatus.OK else HttpStatus.BAD_REQUEST
+//        return  HttpStatus.OK
+
+    @PostMapping("updated-user")
+    private fun updateUser(@RequestBody id: Int): HttpStatus =
+        if(userService.updateUser(id)) HttpStatus.OK else HttpStatus.BAD_REQUEST
 }
