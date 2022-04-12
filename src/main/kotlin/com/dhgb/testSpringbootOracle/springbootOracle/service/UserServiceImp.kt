@@ -1,5 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.service
 
+import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 import com.dhgb.testSpringbootOracle.springbootOracle.repository.UserRepo
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,7 +31,6 @@ class UserServiceImp: UserService {
 
     override fun deleteUser(id: Int): Boolean {
         return try {
-//            println("Encontrado: ${userRepo.findById(id).get()}")
             if(!userRepo.findById(id).isEmpty){
                 println("Entraaa")
                 userRepo.delete(userRepo.findById(id).get())
@@ -41,9 +41,20 @@ class UserServiceImp: UserService {
         }
     }
 
-    override fun updateUser(id: Int): Boolean {
+    override fun updateUser(upUser: ModifyUserRequest): Boolean {
         return try {
-//            userRepo.updateUser(id)
+            if(!userRepo.findById(upUser.id).isEmpty){
+                if(upUser.userName != null){
+                    userRepo.findById(upUser.id).get().userName = upUser.userName
+                }
+                if(upUser.password != null){
+                    userRepo.findById(upUser.id).get().password = upUser.password
+                }
+                if(upUser.phone != null){
+                    userRepo.findById(upUser.id).get().phone = upUser.phone
+                }
+                userRepo.save(userRepo.findById(upUser.id).get())
+            }
             true
         }catch (e: Exception){
             false

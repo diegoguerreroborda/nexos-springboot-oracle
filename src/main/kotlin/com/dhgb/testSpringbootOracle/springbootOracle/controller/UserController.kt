@@ -1,5 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.controller
 
+import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 import com.dhgb.testSpringbootOracle.springbootOracle.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,10 +38,12 @@ class UserController {
     }
 
     @PostMapping("/deleted-user")
-    private fun deleteUserById(@RequestBody id: String): HttpStatus =
-            if(userService.deleteUser(id.toInt())) HttpStatus.OK else HttpStatus.BAD_REQUEST
+    private fun deleteUserById(@RequestBody id: String): HttpStatus {
+        return if(userService.deleteUser(id.toInt())) HttpStatus.OK else HttpStatus.BAD_REQUEST
+    }
 
     @PostMapping("updated-user")
-    private fun updateUser(@RequestBody id: Int): HttpStatus =
-        if(userService.updateUser(id)) HttpStatus.OK else HttpStatus.BAD_REQUEST
+    private fun updateUser(@RequestBody upUser: ModifyUserRequest): HttpStatus {
+        return if(userService.updateUser(upUser)) HttpStatus.OK else HttpStatus.BAD_REQUEST
+    }
 }

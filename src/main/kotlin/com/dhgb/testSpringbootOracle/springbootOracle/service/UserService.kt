@@ -1,5 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.service
 
+import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 
 interface UserService {
@@ -8,5 +9,5 @@ interface UserService {
     fun findUsersByName(name: String): List<User>
     fun saveUser(user: User): Boolean
     fun deleteUser(id: Int): Boolean
-    fun updateUser(id: Int): Boolean
+    fun updateUser(upUser: ModifyUserRequest): Boolean
 }
