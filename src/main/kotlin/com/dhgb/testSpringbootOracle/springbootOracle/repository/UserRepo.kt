@@ -4,4 +4,6 @@ import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepo: JpaRepository<User, Int> {
+
+    fun findByUserName(name: String): List<User>
 }

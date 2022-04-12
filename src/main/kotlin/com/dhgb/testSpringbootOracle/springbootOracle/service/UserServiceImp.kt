@@ -1,6 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.service
 
-import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
+import com.dhgb.testSpringbootOracle.springbootOracle.model.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 import com.dhgb.testSpringbootOracle.springbootOracle.repository.UserRepo
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +17,7 @@ class UserServiceImp: UserService {
     }
 
     override fun findUsersByName(name: String): List<User> {
-        return userRepo.findAll()
+        return userRepo.findByUserName(name)
     }
 
     override fun saveUser(user: User): Boolean {

@@ -1,6 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.controller
 
-import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
+import com.dhgb.testSpringbootOracle.springbootOracle.model.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 import com.dhgb.testSpringbootOracle.springbootOracle.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,10 +27,10 @@ class UserController {
 //        return userRepository.findColumnIntoDb(column.trim())
     }
 
-//    @PostMapping("/users-name")
-//    fun findByUserName(@RequestBody name: String): List<User>{
-////        return userRepo.findByUserName(name)
-//    }
+    @PostMapping("/users-name")
+    fun findByUserName(@RequestBody name: String): List<User>{
+        return userService.findUsersByName(name)
+    }
 
     @PostMapping("/new-user")
     private fun addUser(@RequestBody user: User): HttpStatus {

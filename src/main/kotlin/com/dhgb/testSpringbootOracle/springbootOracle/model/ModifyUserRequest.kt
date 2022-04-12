@@ -1,4 +1,4 @@
-package com.dhgb.testSpringbootOracle.springbootOracle.dto
+package com.dhgb.testSpringbootOracle.springbootOracle.model
 
 data class ModifyUserRequest(
         val id: Int,

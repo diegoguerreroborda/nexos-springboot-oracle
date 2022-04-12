@@ -1,6 +1,6 @@
 package com.dhgb.testSpringbootOracle.springbootOracle.service
 
-import com.dhgb.testSpringbootOracle.springbootOracle.dto.ModifyUserRequest
+import com.dhgb.testSpringbootOracle.springbootOracle.model.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
 
 interface UserService {
