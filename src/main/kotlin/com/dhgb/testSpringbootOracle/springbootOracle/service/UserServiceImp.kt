@@ -13,7 +13,7 @@ class UserServiceImp: UserService {
     lateinit var userRepo: UserRepo
 
     override fun findAllUsers(): List<User> {
-        return userRepo.findAll()
+        return userRepo.findAllByOrderByIdAsc()
     }
 
     override fun findUsersByName(name: String): List<User> {
@@ -32,7 +32,6 @@ class UserServiceImp: UserService {
     override fun deleteUser(id: Int): Boolean {
         return try {
             if(!userRepo.findById(id).isEmpty){
-                println("Entraaa")
                 userRepo.delete(userRepo.findById(id).get())
             }
             true

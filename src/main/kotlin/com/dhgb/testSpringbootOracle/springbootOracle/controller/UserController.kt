@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
-
 //Oracle
 @RestController
 class UserController {
@@ -15,16 +14,9 @@ class UserController {
     @Autowired
     lateinit var userService: UserService
 
-
     @GetMapping("/")
     private fun findAll(): List<User> {
         return userService.findAllUsers()
-    }
-
-    @PostMapping("/type")
-    private fun findColumnUser(@RequestBody column: String){ //: List<String>
-//        println("Todos: ${userRepo.findAll()}")
-//        return userRepository.findColumnIntoDb(column.trim())
     }
 
     @PostMapping("/users-name")
