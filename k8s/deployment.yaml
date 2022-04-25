@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+  labels:
+    app: database
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+        - name: database
+          image: gvenzl/oracle-xe:21-slim
+          env:
+            - name: ORACLE_PASSWORD
+              value: "123"
+          ports:
+            - containerPort: 1521
+
+# kubectl apply -f .\k8s\deployment.yaml
+# kubectl get pods
+
+#Para borrar kubectl delete --all deployments
