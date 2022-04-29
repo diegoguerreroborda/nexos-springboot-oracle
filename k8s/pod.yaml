@@ -14,10 +14,23 @@ spec:
     ports:
       - containerPort: 1521
 
+#SQL
+#select table_name from user_tables;
+
+#Para docker
+# https://hub.docker.com/r/gvenzl/oracle-xe
+#docker run -d -p 1523:1521 -e ORACLE_PASSWORD=123 gvenzl/oracle-xe:21-slim
+#docker run -d -p 1525:1521 -e ORACLE_PASSWORD=123 -v /oraclexe/app/oracle/oradata/:/u01/app/oracle/oradata/:rw gvenzl/oracle-xe:11-slim
+  #sudo docker volume inspect ./oraclexe/app/oracle/oradata/XE/
+# docker run -d -p 1523:1521 oraclelinux:8-slim
+
+#-p 1524:1521 -e ORACLE_PWD=123 -v /oraclexe/app/oracle/oradata/:/u01/app/oracle/oradata
+#docker run -d -p 1522:1521 -e ORACLE_PASSWORD=123 -v /oraclexe/app/oracle/oradata/:/opt/oracle/oradata/ gvenzl/oracle-xe:21-slim
 
 # kubectl apply -f .\k8s\pod.yaml
 # kubectl get pods
 
 # kubectl logs test-pod
 
-#Para borrar kubectl delete --all pods
+#Para borrar
+# kubectl delete --all pods
