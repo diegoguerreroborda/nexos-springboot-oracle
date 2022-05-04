@@ -11,8 +11,18 @@ spec:
     env:
     - name: ORACLE_PASSWORD
       value: "123"
+    - name: HOST_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+    readinessProbe:
+      httpGet:
+        path: /kbs
+        port: 3000
+      initialDelaySeconds: 5
     ports:
       - containerPort: 1521
+
 
 #SQL
 #select table_name from user_tables;
