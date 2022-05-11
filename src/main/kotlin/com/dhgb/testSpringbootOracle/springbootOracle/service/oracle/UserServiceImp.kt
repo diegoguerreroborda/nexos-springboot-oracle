@@ -1,4 +1,4 @@
-package com.dhgb.testSpringbootOracle.springbootOracle.service
+package com.dhgb.testSpringbootOracle.springbootOracle.service.oracle
 
 import com.dhgb.testSpringbootOracle.springbootOracle.model.ModifyUserRequest
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User

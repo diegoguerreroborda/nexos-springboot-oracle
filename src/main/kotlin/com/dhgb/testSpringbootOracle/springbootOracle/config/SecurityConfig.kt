@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 
 
 @KeycloakConfiguration
-@EnableGlobalMethodSecurity(jsr250Enabled = true) //prePostEnabled = true, securedEnabled = true,
+@EnableGlobalMethodSecurity(jsr250Enabled = true)
 @Import(KeycloakSpringBootConfigResolver::class)
 class SecurityConfig: KeycloakWebSecurityConfigurerAdapter() {
 
@@ -32,7 +32,6 @@ class SecurityConfig: KeycloakWebSecurityConfigurerAdapter() {
     @Bean
     override fun sessionAuthenticationStrategy(): SessionAuthenticationStrategy {
         return RegisterSessionAuthenticationStrategy(SessionRegistryImpl())
-//        return NullAuthenticatedSessionStrategy()
     }
 
     @Bean

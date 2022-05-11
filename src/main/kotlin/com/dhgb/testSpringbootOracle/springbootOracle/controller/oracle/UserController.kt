@@ -1,7 +1,7 @@
-package com.dhgb.testSpringbootOracle.springbootOracle.controller
+package com.dhgb.testSpringbootOracle.springbootOracle.controller.oracle
 
 import com.dhgb.testSpringbootOracle.springbootOracle.model.User
-import com.dhgb.testSpringbootOracle.springbootOracle.service.UserService
+import com.dhgb.testSpringbootOracle.springbootOracle.service.oracle.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
